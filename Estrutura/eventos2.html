@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Damas - Feed de Eventos e Torneios</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Reset */
+        * {
+            font-family: 'Alegreya SC', serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #e0e7ff;
+            color: #333;
+        }
+        .header {
+            background-color: rgb(20, 43, 56);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .header img {
+ height: 40px;
+            margin-right: 10px;
+        }
+        .header nav {
+            margin-left: auto;
+        }
+        .header nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+            position: relative;
+        }
+        .header nav a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        .header nav a:hover::after {
+            width: 100%;
+        }
+        .header::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 10px;
+            background-color: rgb(52, 107, 138);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff; /* Fundo branco para destacar o conteúdo */
+            border-radius: 10px; /* Bordas arredondadas */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra para profundidade */
+        }
+
+        /* Título do Feed */
+        .main-content h2 {
+            font-size: 2.5rem; /* Aumentando o tamanho da fonte */
+            color: white; /* Cor mais forte para o título */
+            background-color: rgb(10, 29, 39);
+            margin-bottom: 1.5rem;
+            padding: 15px; /* Espaçamento interno */
+            border-radius: 10px; /* Bordas arredondadas */
+            text-align: center;
+        }
+
+        /* Event Layout */
+        .event-container {
+            display: flex;
+            gap: 2rem; /* Aumentando o espaço entre colunas */
+            flex-wrap: wrap; /* Permite que as colunas se ajustem em telas menores */
+        }
+
+        /* Event Cards */
+        .event-card {
+            display: flex; /* Usar flexbox para alinhar a imagem e o conteúdo */
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+            width: 100%; /* Tornar os cartões responsivos */
+            max-width: 600px; /* Largura máxima para os cartões */
+            overflow: hidden;
+            border: solid 1px #1d3b56;
+            transition: transform 0.2s; /* Adicionando transição */
+        }
+
+        .event-card img {
+            width: 250px; /* Ajuste a largura da imagem */
+            height: auto; /* Manter a proporção da imagem */
+            object-fit: cover; /* Manter a proporção da imagem */
+        }
+
+        /* Event Content */
+        .event-content {
+            padding: 1rem;
+            flex: 1;
+        }
+
+        .event-content h3 {
+            font-size: 1.5rem; /* Tamanho do título do evento */
+            color: #0d47a1; /* Cor do título */
+            margin-bottom: 0.5rem; /* Espaçamento abaixo do título */
+        }
+
+        .event-content ul {
+            list-style-type: none; /* Remover marcadores da lista */
+            padding-left: 0; /* Remover preenchimento à esquerda */
+        }
+
+        .event-content ul li {
+            margin: 0.5rem 0; /* Espaçamento entre os itens da lista */
+            display: flex; /* Usar flexbox para alinhar ícones e texto */
+            align-items: center; /* Centralizar verticalmente */
+        }
+
+        .event-content ul li i {
+            margin-right: 10px; /* Espaçamento entre ícone e texto */
+            color: #2196F3; /* Cor dos ícones */
+        }
+
+        /* Unique Styles for Each Event Card */
+        /* Event Card 1 */
+        .event-card-1 {
+            border: 2px solid #2196F3; /* Green border */
+            margin-left: 170px;
+            height: 250px;
+        }
+        .event-card-1 .event-content {
+            background-color: #e3f2fd; /* Light green background */
+        }
+        .event-card-1 .event-content h3 {
+            color: #0d47 a1; /* Dark green text */
+        }
+
+        /* Event Card 2 */
+        .event-card-2 {
+            border: 2px solid #2196F3; /* Orange border */
+            margin-top: 20px;
+            margin-left: 170px;
+            height: 270px;
+        }
+        .event-card-2 .event-content {
+            background-color:  #e3f2fd; /* Light orange background */
+        }
+        .event-card-2 .event-content h3 {
+            color: #0d47a1; /* Dark orange text */
+        }
+
+        /* Event Card 3 */
+        .event-card-3 {
+            border: 2px solid #2196F3; /* Blue border */
+            height: 650px; /* Ajustando a altura automática para o conteúdo */
+            width: 220px;
+            flex-direction: column;
+        }
+        .event-card-3 .event-content {
+            background-color: #e3f2fd; /* Light blue background */
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-size: 20px;
+        }
+        .event-card-3 img{
+            width: 120px;
+            height: auto;
+        }
+        .event-card-3 .event-content h3 {
+            color: #0d47a1; /* Dark blue text */
+        }
+
+        /* Footer */
+        .footer {
+            background-color: rgb(20, 43, 56);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .footer .footer-section {
+            margin: 10px 0;
+        }
+        .footer .footer-section h3 {
+            margin-bottom: 5px;
+        }
+        .footer .social-icons a {
+            margin: 0 10px;
+            color: white;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+   <!-- Header -->
+   <div class="header">
+    <img src="logo.png" alt="Diamond Damas Logo" height="40">
+    <h1>Diamond Damas</h1>
+    <nav>
+        <a href="página-inicial2.html">Início</a>
+        <a href="perfil2.html">Perfil</a>
+        <a href="#">Torneios</a>
+        <a href="faqs.html">Sobre</a>
+        <a href="tela-inicial.html">Sair</a>
+    </nav>
+</div>
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2>Feed de Eventos e Torneios</h2>
+        <div class="event-container">
+            
+            <!-- Event Column (Event 1 and Event 2) -->
+            <div class="event-column">
+                <div class="event-card event-card-1">
+                    <img src="evento-jovens.jpg" alt="Imagem do Evento">
+                    <div class="event-content">
+                        <h3>🌟 Seletiva Jovens Talentos 2024 🌟</h3>
+                        <ul>
+                            <li><i class="fas fa-star icon"></i>Mostre suas habilidades no Programa Jovens Talentos!</li>
+                            <li><i class="fas fa-calendar-alt icon"></i>Inscrições:06/11 até 24/11 </li>
+                            <li><i class="fas fa-user icon"></i>Idade: Jovens entre 12 a 18 anos </li>
+                            <li><i class="fas fa-briefcase icon"></i>Benefícios: Mentoria, Workshops Exclusivos, Experiência em Projetos Reais</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="event-card event-card-2">
+                    <img src="evento2.png" alt="Imagem do Evento">
+                    <div class="event-content">
+                        <h3>🏆 Seletiva Torneio de Damas 2024 🏆</h3>
+                        <ul>
+                            <li><i class="fas fa-star icon"></i>Está pronto para encarar os melhores? Participe da seletiva!</li>
+                            <li><i class="fas fa-calendar-alt icon"></i>Data: 12/11 até 28/11 </li>
+                            <li><i class="fas fa-map-marker-alt icon"></i>Local: Castelão Vila Palmeiras </li>
+                            <li><i class="fas fa-clock icon"></i>Horário: 14:00 as 18:00 </li>
+                            <li><i class="fas fa-trophy icon"></i>Premiação: Troféu para o campeão, Medalhas para os finalistas, Prêmios exclusivos e mais!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column (Event Card 3) -->
+            <div class="right-column">
+                <div class="event-card event-card-3">
+                    <div class="event-content">
+                        <img src="evento3.png" alt="Imagem do Evento" style="width: 220px; height: 200px; margin: 0px; ">
+                        <h3>🏆 Seletiva Torneio de Damas 2024 🏆</h3>
+                        <ul>
+                            <li><i class="fas fa-users icon"></i>Está pronto para encarar os melhores? Participe da seletiva!</li>
+                            <li><i class="fas fa-calendar-alt icon"></i>Data: 15/11 até 28/11 </li>
+                            <li><i class="fas fa-map-marker-alt icon"></i>Local: Jardim Renascença R.dos bicudos </li>
+                            <li><i class="fas fa-clock icon"></i>Horário: 16:00 as 20:00 </li>
+                            <li><i class="fas fa-trophy icon"></i>Premiação: Troféu para o campeão, Medalhas para os finalistas, Prêmios exclusivos e mais!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-section">
+            <h3>Detalhes de afiliações/certificações</h3>
+            <p>Somos afiliados à Federação Maranhense de Jogo de Damas (FMJD) e certificados pela Associação Brasileira de Damas.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Endereços de contato</h3>
+            <p>Rua Exemplo, 123, Centro, São Luís - MA, 65000-000</p>
+            <p>Email: contato@diamondamas.com</p>
+        </div>
+        <div class="footer-section social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>© 2024 Diamond Damas. Todos os direitos reservados.</p>
+    </div>
+</body>
+</html>

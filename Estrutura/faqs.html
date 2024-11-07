@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+ <head>
+  <title>Diamond Damas</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+     * {
+            font-family: 'Alegreya SC', serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #e0e7ff;
+        color: #333;
+    }
+    .header {
+        background-color: rgb(20, 43, 56);
+        color: white;
+        padding: 20px;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+    .header img {
+        height: 40px;
+        margin-right: 10px;
+    }
+    .header nav {
+        margin-left: auto;
+    }
+    .header nav a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+        font-size: 18px;
+        position: relative;
+    }
+    /* Efeito de linha ao passar o mouse nos links */
+    .header nav a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background-color: white;
+        bottom: -5px;
+        left: 0;
+        transition: width 0.3s ease;
+    }
+    .header nav a:hover::after {
+        width: 100%;
+    }
+    .header::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 10px;
+        background-color: rgb(52, 107, 138);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    .content {
+        text-align: center;
+        padding: 20px;
+    }
+    .content h1 {
+        background-color: #3a6b8e;
+        color: white;
+        display: inline-block;
+        margin-top: 50px;
+        padding: 10px 20px;
+        border-radius: 10px;
+    }
+    .all-faqs{
+        /* background-color:rgba(240, 219, 189, 1); */
+        margin-right:auto;
+        padding: 20px;
+        padding-right: 166px;
+        margin: 60px;
+        border-radius: 50px;
+    }
+    .faq-item {
+        margin: 60px auto;
+        padding: 20px;
+        max-width: 600px;
+        display: flex;
+        align-items: center;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        border-radius: 10px;
+        background-color: #ffffff;
+    }
+    .faq-item:not(:last-child) {
+        margin-bottom: 40px; /* Espaçamento entre os tópicos */
+    }
+    .faq-item img {
+        border-radius: 10px;
+        margin-right: 20px;
+        width: 160px;
+        height: 120px;
+    }
+    .faq-item.alternate {
+        flex-direction: row-reverse;
+        margin-right: 166px;
+    }
+    .faq-item.alternate img {
+        margin-right: 0;
+        margin-left: 20px;
+        width: auto;
+    }
+    .faq-item h2 {
+        margin: 0;
+        font-size: 20px;
+    }
+    .faq-item p {
+        margin: 5px;
+        font-size: larger;
+    }
+    .footer {
+        background-color: rgb(20, 43, 56);
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    .footer .footer-section {
+        margin: 20px 0;
+    }
+    .footer .footer-section h3 {
+        margin-bottom: 10px;
+    }
+    .footer .footer-section p,
+    .footer .footer-section a {
+        color: white;
+        margin: 5px 0;
+        text-decoration: none;
+    }
+    .footer .social-icons a {
+        margin: 0 10px;
+        color: white;
+        font-size: 24px;
+    }
+    .footer .footer-section img {
+        margin: 0 10px;
+    }
+    .visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  </style>
+ </head>
+ <body>
+  <div class="header">
+   <img alt="Diamond Damas Logo" height="40" src="logo.png" width="40"/>
+   <h1>Diamond Damas</h1>
+   <nav>
+    <a href="página-inicial2.html">Início</a>
+    <a href="#">Perfil</a>
+    <a href="eventos2.html">Torneios</a>
+    <a href="faqs.html">Sobre</a>
+    <a href="tela-inicial.html">Sair</a>
+   </nav>
+  </div>
+  <div class="content">
+   <h1>Sobre Nós!</h1>
+
+    <div class="all-faqs">
+        <div class="faq-item">
+            <img alt="People playing checkers" height="100" src="logoFMJD.png" width="100"/>
+            <div>
+                <h2>O que é a FMJD?</h2>
+                <p>A Federação Maranhense de Jogo de Damas (FMJD) é a entidade responsável pela organização e promoção do jogo de damas no estado do Maranhão.</p>
+            </div>
+        </div>
+
+        <div class="faq-item alternate">
+            <img alt="Diamond Damas logo" height="100" src="logo.png" width="100"/>
+            <div>
+                <h2>Quem somos nós?</h2>
+                <p>Somos uma equipe de desenvolvimento que se propõe a trazer um novo futuro aos esportes intelectivos e virtuais.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <img alt="People playing checkers" height="250" src="gif-func.gif" width="190"/>
+            <div>
+                <h2>Qual a nossa função?</h2>
+                <p>Em colaboração com a FMJD, o nosso objetivo é promover, desenvolver e difundir o jogo de damas no estado do Maranhão.</p>
+            </div>
+        </div>
+
+        <div class="faq-item alternate">
+            <img alt="Checkers board with pieces" height="100" src="publico-alvo.png" width="100"/>
+            <div>
+                <h2>Qual nosso público alvo?</h2>
+                <p>Desejamos alcançar tanto o cenário casual quanto o competitivo de jogos de damas. Poderão desfrutar do acesso deste site/plataforma.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- Footer -->
+ <div class="footer">
+    <div class="footer-section">
+        <h3>Detalhes de afiliações/certificações</h3>
+        <p>Somos afiliados à Federação Maranhense de Jogo de Damas (FMJD) e certificados pela Associação Brasileira de Damas.</p>
+    </div>
+    <div class="footer-section">
+        <h3>Endereços de contato</h3>
+        <p>Rua Exemplo, 123, Centro, São Luís - MA, 65000-000</p>
+        <p>Email: contato@diamondamas.com</p>
+    </div>
+    <div class="footer-section social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>© 2024 Diamond Damas. Todos os direitos reservados.</p>
+</div>
+
+  <script>
+   document.addEventListener("DOMContentLoaded", function() {
+        const items = document.querySelectorAll('.faq-item');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        items.forEach(item => {
+            observer.observe(item);
+        });
+    });
+  </script>
+ </body>
+</html>

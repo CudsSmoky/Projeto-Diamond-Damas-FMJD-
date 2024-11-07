@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Damas - Tela Inicial</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Estilos Gerais */
+        * {
+            font-family: 'Alegreya SC', serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #e0e7ff;
+            color: #333;
+        }
+        .header {
+            background-color: rgb(20, 43, 56);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .header img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .header nav {
+            margin-left: auto;
+        }
+        .header nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+            position: relative;
+        }
+        /* Efeito de linha ao passar o mouse nos links */
+        .header nav a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        .header nav a:hover::after {
+            width: 100%;
+        }
+        .header::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 10px;
+            background-color: rgb(52, 107, 138);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Container e Seções de Conteúdo */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            display: flex;
+            width: 100%;
+        }
+        .visao-geral {
+            flex: 2;
+            margin-right: 20px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            padding-right: 44px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            flex: 1;
+        }
+        .section h2 {
+            font-size: 30px;
+            color: rgb(20, 43, 56);
+            margin-bottom: 10px;
+        }
+        .section p {
+            color: #555;
+            font-size: 16px;
+        }
+
+        /* Feed de Eventos */
+        .feed-eventos {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            height: 330;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            height: 330px; /* Ajuste a altura do contêiner conforme necessário */
+            padding: 0;
+            margin: 0;
+        }
+        .feed-evento-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: fit-content;
+        }
+
+        @media(max-width){
+            .feed-evento-item{
+                flex: 0 0 100%;
+            }
+        }
+
+        .feed-evento-item {
+            flex: 0 0 48%; /* Ajustado para 50% para dois itens por vez */
+            width: 50%;
+            display: flex;
+            background-color: rgb(225, 240, 255);
+            padding: 0;
+            margin-right: 2%;
+            margin-left: 20px;
+            border-radius: 8px;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            height: 300px;
+            width: 190px;
+        }
+        .feed-evento-item:last-child{
+            margin-right: 0;
+        }
+
+        .feed-evento-item img {
+            width: 100%;
+            height: 230px; /* Altura fixa para manter quadrado */
+            object-fit: cover;
+            border-radius: 5px;
+            /* margin-bottom: 10px; */
+        }
+
+        /* Barra de Progresso */
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        .progress {
+            height: 100%;
+            width: 0;
+            background-color: rgb(52, 107, 138);
+            transition: width 0.1s linear;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: rgb(20, 43, 56);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .footer .footer-section {
+            margin: 10px 0;
+        }
+        .footer .footer-section h3 {
+            margin-bottom: 5px;
+        }
+        .footer .social-icons a {
+            margin: 0 10px;
+            color: white;
+            font-size: 20px;
+        }
+        
+        /* Botões */
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #1a2e3b;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 10px;
+            
+        }
+        .btn:hover {
+            background-color: rgb(52, 107, 138);
+        }
+
+        a{
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <img src="logo.png" alt="Diamond Damas Logo" height="40">
+        <h1>Diamond Damas</h1>
+        <nav>
+            <a href="página-inicial2.html">Início</a>
+            <a href="perfil2.html">Perfil</a>
+            <a href="eventos2.html">Torneios</a>
+            <a href="faqs.html">Sobre</a>
+            <a href="tela-inicial.html">Sair</a>
+        </nav>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <div class="container">
+        <!-- Visão Geral da Federação -->
+        <div class="section visao-geral">
+            <h2>Visão Geral da Federação</h2>
+            <p>A Federação Maranhense de Jogo de Damas (FMJD) foi fundada em 1989 com o objetivo de promover e desenvolver o jogo de damas em nosso estado. Desde então, tem trabalhado incansavelmente para organizar torneios, promover a inclusão social através do esporte e fomentar o crescimento da modalidade.</p>
+            <p>Nossa missão é incentivar a prática do jogo de damas, formando novos jogadores e criando um ambiente competitivo saudável e acessível para todos. Com uma equipe dedicada e apaixonada, a FMJD busca elevar o nível do jogo e promover eventos que unam a comunidade em torno desta tradição.</p>
+        </div>
+
+        <div>
+            <!-- Feed de Eventos -->
+            <div class="section">
+                <h2>Feed de Eventos</h2>
+                <div class="feed-eventos">
+                    <div class="feed-evento-container">
+                        <div class="feed-evento-item">
+                            <img src="imgevento1.webp" alt="Torneio Estadual de Damas">
+                            <div>
+                                <h3>Seletiva São Luís 2024</h3>
+                                <p>Data: 12/11/2024</p>
+                                <p>Local: São Luís - MA</p>
+                            </div>
+                        </div>
+                        <div class="feed-evento-item">
+                            <img src="event3.jfif" alt="Encontro Semanal de Damas">
+                            <div>
+                                <h3>Encontro Semanal de Damas</h3>
+                                <p>Data: 05/11/2024</p>
+                                <p>Local: Centro Cultural</p>
+                            </div>
+                        </div>
+                        <div class="feed-evento-item">
+                            <img src="event2.jfif" alt="Torneio Nacional de Damas">
+                            <div>
+                                <h3>Seletiva Codó 2024</h3>
+                                <p>Data: 15/12/2024</p>
+                                <p>Local: Codó - MA</p>
+                            </div>
+                        </div>
+                        <div class="feed-evento-item">
+                            <img src="event4.jfif" alt="Campeonato Regional de Damas">
+                            <div>
+                                <h3>Campeonato Regional de Damas</h3>
+                                <p>Data: 20/12/2024</p>
+                                <p>Local: Imperatriz - MA</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Barra de Progresso -->
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anúncio de Eventos -->
+            <div class="section">
+                <h2>Anúncio de Próximos Eventos</h2>
+                <p>Fique atento aos próximos torneios e eventos de damas organizados pela FMJD. Acompanhe nosso site e redes sociais para mais informações.</p>
+                <button class="btn" onclick="window.location.href='eventos2.html'">Saiba Mais</button>
+            </div>
+
+            <!-- Outras Informações -->
+            <div class="section">
+                <h2>Notícias e Novidades</h2>
+                <p>Confira as últimas notícias sobre o cenário de damas no Brasil e eventos importantes que estão por vir. A FMJD se compromete a manter você informado sobre tudo o que acontece no mundo das damas.</p>
+                <button class="btn"><a href="https://www.coolmathgames.com/pt-br/blog/como-jogar-damas-um-guia-passo-a-passo">Leia Mais</a></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-section">
+            <h3>Detalhes de afiliações/certificações</h3>
+            <p>Somos afiliados à Federação Maranhense de Jogo de Damas (FMJD) e certificados pela Associação Brasileira de Damas.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Endereços de contato</h3>
+            <p>Rua Exemplo, 123, Centro, São Luís - MA, 65000-000</p>
+            <p>Email: contato@diamondamas.com</p>
+        </div>
+        <div class="footer-section social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>© 2024 Diamond Damas. Todos os direitos reservados.</p>
+    </div>
+
+    <script>
+        // Configurações para a troca de eventos e a barra de progresso
+        let index = 0;
+        const feedContainer = document.querySelector('.feed-evento-container');
+        const feedItems = document.querySelectorAll('.feed-evento-item');
+        const progressBar = document.querySelector('.progress');
+        const totalItems = feedItems.length;
+        const intervalTime = 10000; // Duração da animação
+
+        // Função para iniciar a animação da barra de progresso
+        function startProgressBar() {
+            progressBar.style.width = '0%';
+            progressBar.style.transition = 'none';  // Remove transição para reset
+            setTimeout(() => {
+                progressBar.style.transition = `width ${intervalTime}ms linear`; // Define a duração da transição
+                progressBar.style.width = '100%'; // Expande a barra até 100%
+            }, 50); // Pequeno atraso para garantir o início da animação
+        }
+
+        // Iniciar a animação da barra de progresso ao carregar a página
+        startProgressBar();
+
+        setInterval(() => {
+            // Alterna o item do feed de eventos
+            index = (index + 2) % totalItems; // Mover de dois em dois
+            feedContainer.style.transform = `translateX(-${index * (100 / 2)}%)`; // Ajuste para mover corretamente
+
+            // Reinicia a animação da barra de progresso
+            startProgressBar();
+        }, intervalTime);
+    </script>
+</body>
+</html>

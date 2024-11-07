@@ -1,0 +1,224 @@
+<html>
+ <head>
+  <title>
+   Diamond Damas
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+SC:ital,wght@0,400;0,500;0,700;0,800;0,900&display=swap');
+*{
+    font-family: "alegreya SC", serif;
+            font-weight: 400;
+}
+   body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #e0e7ff;
+        }
+        .logo {
+            max-height: 120px;
+            padding-bottom: 30px;
+            
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Ajustando a altura da área de conteúdo */
+        }
+        .box {
+            display: flex;
+            width: 800px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .left {
+            background-color: #1a2e3b;
+            color: white;
+            padding: 20px;
+            width: 35%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .left h2 {
+            font-size: 36px;
+            margin: 0 0 20px 0;
+        }
+        .left p {
+            margin: 0 0 20px 0;
+            text-align: left;
+        }
+        .left button {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 10px 50px;
+            font-size: 24px;
+            cursor: pointer;
+            border-radius: 20px;
+            align-self: center;
+            margin-top: 40px;
+        }
+        .right {
+            padding: 40px;
+            width: 65%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .right h2 {
+            font-size: 36px;
+            margin: 0 0 10px 0;
+            text-align: center;
+        }
+        .right p {
+            text-align: center;
+            margin: 0 0 20px 0;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            display: none;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+        .right input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 0;
+            font-size: 16px;
+            background-color: rgb(217, 217, 217);
+        }
+        .right button {
+            background-color: rgb(26, 46, 59);
+            color: white;
+            padding: 10px 20px;
+            font-size: 24px;
+            cursor: pointer;
+            border: none;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 200px;
+            align-self: center;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="container">
+   <div class="box">
+    <div class="left">
+     <img src="logo.png" alt="Logo" class="logo">
+     <h2>
+      Bem-vindo de volta!
+     </h2>
+     <p>
+      Acesse sua conta agora mesmo
+     </p>
+     <button onclick="window.location.href='login.html'">Entrar</button>
+    </div>
+    <div class="right">
+     <h2>
+      Crie sua conta
+     </h2>
+     <p>
+      Preencha os dados
+     </p>
+
+     <input id="name" placeholder="Nome" type="text"/>
+     <p class="error-message" id="name-error">Por favor, insira seu nome.</p>
+     
+     <input id="doc" placeholder="CPF" type="number"/>
+     <p class="error-message" id="cpf-error">Por favor, insira um CPF válido.</p>
+
+     <input id="email" placeholder="Email" type="email"/>
+     <p class="error-message" id="email-error">Por favor, insira um email válido.</p>
+     
+     <input id="senha" placeholder="Senha" type="password"/>
+     <p class="error-message" id="senha-error">Por favor, insira uma senha.</p>
+
+     <button id="submit">Cadastrar</button>
+    </div>
+   </div>
+  </div>
+  
+  <script>
+ // Função para validar campos e enviar
+ const submitBtn = document.getElementById("submit");
+
+ submitBtn.onclick = function() {
+    const name = document.getElementById("name").value.trim();
+    const documento = document.getElementById("doc").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("senha").value.trim();
+
+    // Mensagens de erro
+    const nameError = document.getElementById("name-error");
+    const cpfError = document.getElementById("cpf-error");
+    const emailError = document.getElementById("email-error");
+    const senhaError = document.getElementById("senha-error");
+
+    // Regex para validar email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let isValid = true;
+
+    // Resetando as mensagens de erro
+    nameError.style.display = "none";
+    cpfError.style.display = "none";
+    emailError.style.display = "none";
+    senhaError.style.display = "none";
+
+    // Validações
+    if (!name) {
+        nameError.style.display = "block";
+        isValid = false;
+    }
+    if (!documento || documento.length < 11) {
+        cpfError.style.display = "block";
+        isValid = false;
+    }
+    if (!email || !emailRegex.test(email)) {
+        emailError.style.display = "block";
+        isValid = false;
+    }
+    if (!senha) {
+        senhaError.style.display = "block";
+        isValid = false;
+    }
+
+    // Enviar dados se todos os campos estiverem válidos
+    if (isValid) {
+        const data = {
+            name: name,
+            documento: documento,
+            email: email,
+            senha: senha
+        };
+
+        let req = new XMLHttpRequest();
+        req.onreadystatechange = () => {
+            if (req.readyState == XMLHttpRequest.DONE) {
+                if (req.status === 200) {
+                    // Redirecionamento para página inicial após sucesso no cadastro
+                    window.location.href = "página-inicial2.html";
+                } else {
+                    alert("Erro ao enviar os dados. Tente novamente.");
+                }
+            }
+        };
+
+        req.open("POST", "https://api.jsonbin.io/v3/b", true);
+        req.setRequestHeader("Content-Type", "application/json");
+        req.setRequestHeader("X-Master-Key", "$2a$10$l8e6FGB6pUJsrj1zhA78ROO1haWQ9W02Bj80P.IUp3JkUtdyWivmm");
+        req.send(JSON.stringify(data));
+    }
+ };
+  </script>
+  <script src="src/components/Cadastro.js"></script>
+ </body>
+</html>

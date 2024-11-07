@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Bem-vindo ao Diamond Damas</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Estilos Gerais */
+        * {
+            font-family: 'Alegreya SC', serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #e0e7ff;
+            color: #333;
+        }
+
+        /* Estilos do Header */
+        header {
+            background-color: rgb(20, 43, 56);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        header img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        header h1 {
+            margin-right: auto;
+            font-size: 24px;
+        }
+        header nav {
+            margin-left: auto; /* Empurra o nav para a direita */
+        }
+        header nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+            position: relative;
+        }
+
+        /* Efeito de linha ao passar o mouse nos links */
+        header nav a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Linha de fundo azul abaixo do header */
+        header::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 10px;
+            background-color: rgb(52, 107, 138);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .banner {
+            background: url('https://clubepaineiras.org.br/wp-content/uploads/2023/02/jogo-de-damas-1.jpg.webp') no-repeat center;
+            background-size: cover;
+            text-align: center;
+            padding: 100px 50px;
+            color: rgb(3, 25, 37);
+        }
+        .banner h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .banner p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        .banner .btn {
+            background-color: rgb(216, 95, 15);
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .content-section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .damas-text {
+        max-width: 900px; /* Ajuste este valor conforme necessário */
+        margin: 0 auto;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: rgb(20, 43, 56);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .footer .footer-section {
+            margin: 10px 0;
+        }
+        .footer .footer-section h3 {
+            margin-bottom: 5px;
+        }
+        .footer .social-icons a {
+            margin: 0 10px;
+            color: white;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo do site">
+        <h1>Diamond Damas</h1>
+        <nav>
+            <a href="#">Início</a>
+            <a href="#">Perfil</a>
+            <a href="#">Torneios</a>
+            <a href="#">Sobre</a>
+            <a href="#">Sair</a>
+        </nav>
+    </header>
+    
+    <div class="banner">
+        <h1>Bem-vindo ao Diamond Damas</h1>
+        <p>Explore o mundo do jogo de damas e torne-se um mestre</p>
+        <button class="btn" onclick="window.location.href='cadastro4.html'">Cadastre-se</button>
+        <button class="btn" onclick="window.location.href='login.html'">Entrar </button>
+    </div>
+    
+    <div class="content-section">
+        <h2>Sobre o Jogo de Damas</h2>
+        <p class="damas-text">O jogo de damas é um clássico jogo de tabuleiro que combina estratégia, raciocínio lógico e habilidades de planejamento.A simplicidade das regras torna o jogo acessível a todas as idades, mas sua profundidade estratégica oferece um desafio estimulante para iniciantes e jogadores experientes. Popular em diversas culturas, o jogo de damas é uma excelente forma de desenvolver concentração, paciência e pensamento tático.</p>
+    </div>
+    
+    <div class="content-section">
+        <h2>Próximos Torneios</h2>
+        <p class="damas-text">Participe dos eventos de damas e aproveite a chance de se desafiar e evoluir no jogo! Cada evento é uma oportunidade de aprender novas estratégias, conhecer jogadores incríveis e trocar experiências. Não importa seu nível de habilidade — seja iniciante ou avançado, sempre há algo a ganhar: desde aprimoramento técnico até novas amizades. Venha fazer parte dessa comunidade apaixonada pelo jogo de damas, divirta-se e mostre seu talento!</p>
+    </div>
+    
+     <!-- Footer -->
+     <div class="footer">
+        <div class="footer-section">
+            <h3>Detalhes de afiliações/certificações</h3>
+            <p>Somos afiliados à Federação Maranhense de Jogo de Damas (FMJD) e certificados pela Associação Brasileira de Damas.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Endereços de contato</h3>
+            <p>Rua Exemplo, 123, Centro, São Luís - MA, 65000-000</p>
+            <p>Email: contato@diamondamas.com</p>
+        </div>
+        <div class="footer-section social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>© 2024 Diamond Damas. Todos os direitos reservados.</p>
+    </div>
+
+    <script src="src/components/TelaInicial.js"></script>
+</body>
+</html>
